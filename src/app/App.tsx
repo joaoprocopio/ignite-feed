@@ -1,5 +1,3 @@
-import { Post } from "~/components"
-
 export function App() {
-  return <Post />
+  return <div>hello world!</div>
 }

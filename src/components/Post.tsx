@@ -1,3 +1,3 @@
-export function Post() {
-  return <div>post</div>
+export function Post({ author }: { author: string }) {
+  return <div>{author}</div>
 }
