@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
-    "lib": [
-      "es2023"
-    ],
-    "types": [
-      "node"
-    ],
+    "lib": ["es2023"],
+    "types": ["node"],
     "module": "ESNext",
     "target": "es2022",
     "allowSyntheticDefaultImports": true,
@@ -13,9 +9,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "composite": true
   },
-  "include": [
-    "./*.config.ts"
-  ],
+  "include": ["./*.config.*"]
 }
