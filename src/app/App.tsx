@@ -1,5 +1,5 @@
-import "./App.css"
+import { Header } from "~/components"
 
 export function App() {
-  return <div>hello world!</div>
+  return <Header />
 }
