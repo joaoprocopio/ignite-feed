@@ -9,9 +9,9 @@ interface Props {
 
 export function Post({ post }: Props) {
   return (
-    <>
-      <div>{post.author}</div>
-      <div>{post.content}</div>
-    </>
+    <div className="bg-secondary-600">
+      <span>{post.author}</span>
+      <span>{post.content}</span>
+    </div>
   )
 }

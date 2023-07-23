@@ -4,9 +4,9 @@ export function App() {
   return (
     <>
       <Header />
-      <div>
-        <aside>a</aside>
-        <main>
+      <div className="mx-auto grid max-w-6xl grid-cols-[256px,1fr] items-start gap-x-8 py-8">
+        <aside className="bg-secondary-600">a</aside>
+        <main className="flex flex-col gap-8">
           <Post
             post={{
               author: "João Procópio",
