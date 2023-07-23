@@ -1,11 +1,11 @@
-import { Header, Post, Sidebar } from "~/components"
+import { Header, Post } from "~/components"
 
 export function App() {
   return (
     <>
       <Header />
       <div>
-        <Sidebar />
+        <aside>a</aside>
         <main>
           <Post
             post={{
