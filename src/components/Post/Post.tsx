@@ -1,12 +1,12 @@
 import styles from "./Post.module.scss"
-import { Avatar } from "~/components"
+import { Avatar, Reply } from "~/components"
 
 export function Post() {
   return (
     <article className={styles.post}>
       <header className={styles.postHeader}>
         <div className={styles.postHeaderAuthor}>
-          <Avatar outlined src="https://avatars.githubusercontent.com/u/88688324" />
+          <Avatar outlined src="https://github.com/joaoprocopio.png" />
 
           <div className={styles.postHeaderAuthorInfo}>
             <strong className={styles.postHeaderAuthorInfoName}>João Procópio</strong>
@@ -48,6 +48,8 @@ export function Post() {
           Publicar
         </button>
       </form>
+
+      <Reply />
     </article>
   )
 }

@@ -12,11 +12,7 @@ export function Sidebar() {
       />
 
       <div className={styles.sidebarProfile}>
-        <Avatar
-          outlined
-          customClass={styles.sidebarProfileAvatar}
-          src="https://avatars.githubusercontent.com/u/88688324"
-        />
+        <Avatar outlined customClass={styles.sidebarProfileAvatar} src="https://github.com/joaoprocopio.png" />
 
         <strong className={styles.sidebarProfileName}>João Procópio</strong>
         <span className={styles.sidebarProfileOccupation}>Camisa 10 do Botafogo</span>
