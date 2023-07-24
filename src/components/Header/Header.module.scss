@@ -1,0 +1,7 @@
+.header {
+  @apply mx-auto flex justify-center items-center bg-secondary-600 h-16;
+
+  &-logo {
+    @apply h-8;
+  }
+}
