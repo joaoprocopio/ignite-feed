@@ -4,7 +4,8 @@
 
 @layer base {
   a,
-  button {
+  button,
+  textarea {
     @apply transition-colors duration-100;
   }
 

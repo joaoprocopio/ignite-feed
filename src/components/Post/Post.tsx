@@ -42,7 +42,7 @@ export function Post() {
       <form className={styles.postReply}>
         <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
 
-        <textarea className={styles.postReplyContent} placeholder="Escreva um comentário..." />
+        <textarea className={styles.postReplyText} placeholder="Escreva um comentário..." />
 
         <button className={styles.postReplyButton} type="submit">
           Publicar

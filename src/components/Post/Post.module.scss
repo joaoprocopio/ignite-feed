@@ -26,7 +26,7 @@
   }
 
   &-content {
-    @apply flex flex-col gap-2  py-4 leading-relaxed;
+    @apply flex flex-col gap-2 py-4 leading-relaxed;
 
     a {
       @apply font-bold text-primary-500;
@@ -41,7 +41,7 @@
       @apply font-bold;
     }
 
-    &-content {
+    &-text {
       @apply mb-8 mt-4;
       @apply resize-none border-none outline-none;
       @apply h-24 min-w-full rounded-lg border-0 bg-secondary-700 p-4;
