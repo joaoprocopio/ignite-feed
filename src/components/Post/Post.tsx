@@ -1,11 +1,12 @@
 import styles from "./Post.module.scss"
+import { Avatar } from "~/components"
 
 export function Post() {
   return (
     <article className={styles.post}>
       <header className={styles.postHeader}>
         <div className={styles.postHeaderAuthor}>
-          <img src="https://avatars.githubusercontent.com/u/88688324" />
+          <Avatar src="https://avatars.githubusercontent.com/u/88688324" />
           <div className={styles.postHeaderAuthorInfo}>
             <strong className={styles.postHeaderAuthorInfoName}>João Procópio</strong>
             <span className={styles.postHeaderAuthorInfoOccupation}>Camisa 10 do Botafogo</span>
