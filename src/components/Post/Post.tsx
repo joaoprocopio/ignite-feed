@@ -1,3 +1,5 @@
+import styles from "./Post.module.css"
+
 interface Author {
   name: string
   occupation: string
@@ -10,7 +12,7 @@ interface Post {
 
 export function Post({ post }: { post: Post }) {
   return (
-    <article className="rounded-lg bg-secondary-600">
+    <article className={styles.post}>
       <header>
         <div>
           <img src="https://avatars.githubusercontent.com/u/88688324" />
