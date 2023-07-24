@@ -1,3 +1,5 @@
+import "~/assets/styles/main.css"
+
 import { Header, Sidebar, Post } from "~/components"
 
 export function App() {
