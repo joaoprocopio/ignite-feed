@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :focus {
+    @apply outline outline-primary-500;
+  }
+
   a,
   button,
   textarea {
