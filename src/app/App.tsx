@@ -11,8 +11,6 @@ export function App() {
 
         <main className={styles.content}>
           <Post />
-
-          <Post />
         </main>
       </div>
     </>

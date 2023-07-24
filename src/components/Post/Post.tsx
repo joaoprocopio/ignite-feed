@@ -1,16 +1,6 @@
-import styles from "./Post.module.css"
+import styles from "./Post.module.scss"
 
-interface Author {
-  name: string
-  occupation: string
-}
-
-interface Post {
-  author: Author
-  content: string
-}
-
-export function Post({ post }: { post: Post }) {
+export function Post() {
   return (
     <article className={styles.post}>
       <header>
@@ -29,7 +19,7 @@ export function Post({ post }: { post: Post }) {
         </time>
       </header>
 
-      <section className="leading-relaxed">
+      <section className={styles.postContent}>
         <p>Fala galeraa 👋</p>
         <p>
           Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
