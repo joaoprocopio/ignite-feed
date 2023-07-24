@@ -1,0 +1,8 @@
+.container {
+  @apply mx-auto max-w-6xl gap-x-8 p-8;
+  @apply grid grid-cols-[256px,1fr] items-start;
+}
+
+.content {
+  @apply flex flex-col gap-8;
+}
