@@ -39,7 +39,7 @@ export function Post() {
         </p>
       </section>
 
-      <form className={styles.postReply}>
+      <form className={styles.postReply} onSubmit={(e) => e.preventDefault()}>
         <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
 
         <textarea className={styles.postReplyText} placeholder="Escreva um comentário..." />
