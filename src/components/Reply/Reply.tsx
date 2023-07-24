@@ -11,14 +11,19 @@ export function Reply() {
       <div className={styles.replyContainer}>
         <div className={styles.replyContainerBox}>
           <header className={styles.replyContainerBoxMeta}>
-            <div className={styles.replyContainerBoxMetaAuthor}>Devon Lane</div>
+            <div>
+              <div className={styles.replyContainerBoxMetaAuthor}>Devon Lane</div>
+              <time
+                className={styles.replyContainerBoxMetaPostedAt}
+                title="24 de Julho de 2022 às 11:45h"
+                dateTime="2022-07-24 11:45:00">
+                Cerca de 1h
+              </time>
+            </div>
 
-            <time
-              className={styles.replyContainerBoxMetaPostedAt}
-              title="24 de Julho de 2022 às 11:45h"
-              dateTime="2022-07-24 11:45:00">
-              Cerca de 1h
-            </time>
+            <button className={styles.replyContainerBoxMetaDelete}>
+              <Trash size={24} />
+            </button>
           </header>
 
           <p className={styles.replyContainerBoxContent}>
@@ -29,7 +34,7 @@ export function Reply() {
 
         <footer className={styles.replyContainerActions}>
           <button className={styles.replyContainerActionsLike}>
-            <ThumbsUp size={20} />
+            <ThumbsUp size={20} weight="bold" />
             <span>Aplaudir • 33</span>
           </button>
         </footer>

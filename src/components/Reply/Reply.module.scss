@@ -8,7 +8,7 @@
       @apply rounded-lg bg-secondary-500 p-4;
 
       &-meta {
-        @apply leading-normal;
+        @apply flex flex-row items-start justify-between leading-normal;
 
         &-author {
           @apply font-bold text-secondary-100;
@@ -16,6 +16,10 @@
 
         &-posted-at {
           @apply text-xs text-secondary-300;
+        }
+
+        &-delete {
+          @apply text-secondary-300 focus:outline-danger active:text-danger;
         }
       }
 
@@ -27,7 +31,7 @@
     &-actions {
       &-like {
         @apply flex gap-2 font-bold text-secondary-300;
-        @apply hover:text-primary-400;
+        @apply hover:text-white active:text-primary-400;
       }
     }
   }
