@@ -1,3 +1,5 @@
+import { PencilSimpleLine } from "@phosphor-icons/react"
+
 import { Header, Post } from "~/components"
 
 export function App() {
@@ -28,7 +30,8 @@ export function App() {
           <footer className="w-full border-t border-t-secondary-500 px-8 pb-8 pt-6">
             <a
               href="#"
-              className="flex h-14 items-center justify-center rounded-lg border border-primary-400 bg-transparent px-6 py-4 font-bold text-primary-400">
+              className="flex h-14 items-center justify-center gap-2 rounded-lg border border-primary-400 bg-transparent px-6 py-4 font-bold text-primary-400 transition-colors duration-300 hover:bg-primary-400 hover:text-white">
+              <PencilSimpleLine size="20px" weight="bold" />
               <span>Editar seu perfil</span>
             </a>
           </footer>
