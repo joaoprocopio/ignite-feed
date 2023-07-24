@@ -1,7 +1,40 @@
 .post {
   @apply rounded-lg bg-secondary-600 p-8;
 
+  &-header {
+    @apply flex items-center justify-between;
+
+    &-author {
+      @apply flex items-center gap-4;
+
+      &-info {
+        @apply flex flex-col leading-relaxed;
+
+        &-name {
+          @apply font-bold text-secondary-100;
+        }
+
+        &-occupation {
+          @apply text-secondary-300;
+        }
+      }
+    }
+
+    &-posted-at {
+      @apply text-sm text-secondary-300;
+    }
+  }
+
   &-content {
     @apply mt-4 leading-relaxed;
+
+    p {
+      @apply mb-2;
+    }
+
+    a {
+      @apply font-bold text-primary-500;
+      @apply hover:text-primary-400;
+    }
   }
 }

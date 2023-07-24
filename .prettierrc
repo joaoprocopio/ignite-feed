@@ -6,6 +6,7 @@
   "jsxSingleQuote": false,
   "singleQuote": false,
   "semi": false,
+  "printWidth": 120,
   "trailingComma": "none",
   "plugins": ["prettier-plugin-tailwindcss"],
   "pluginSearchDirs": false

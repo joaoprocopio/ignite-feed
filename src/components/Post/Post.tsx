@@ -3,16 +3,17 @@ import styles from "./Post.module.scss"
 export function Post() {
   return (
     <article className={styles.post}>
-      <header>
-        <div>
+      <header className={styles.postHeader}>
+        <div className={styles.postHeaderAuthor}>
           <img src="https://avatars.githubusercontent.com/u/88688324" />
-          <div>
-            <strong>João Procópio</strong>
-            <span>Camisa 10 do Botafogo</span>
+          <div className={styles.postHeaderAuthorInfo}>
+            <strong className={styles.postHeaderAuthorInfoName}>João Procópio</strong>
+            <span className={styles.postHeaderAuthorInfoOccupation}>Camisa 10 do Botafogo</span>
           </div>
         </div>
 
         <time
+          className={styles.postHeaderPostedAt}
           title="24 de Julho de 2022 às 11:45h"
           dateTime="2022-07-24 11:45:00">
           Publicado há 1h
@@ -22,8 +23,8 @@ export function Post() {
       <section className={styles.postContent}>
         <p>Fala galeraa 👋</p>
         <p>
-          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-          no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
+          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O
+          nome do projeto é DoctorCare 🚀
         </p>
         <p>
           👉{" "}
@@ -31,7 +32,9 @@ export function Post() {
             jane.design/doctorcare
           </a>
         </p>
-        <p>#novoprojeto #nlw #rocketseat</p>
+        <p>
+          <a href="#">#novoprojeto</a> <a href="#">#nlw</a> <a href="#">#rocketseat</a>
+        </p>
       </section>
     </article>
   )
