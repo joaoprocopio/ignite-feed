@@ -11,15 +11,10 @@ export function Sidebar() {
       />
 
       <div className={styles.sidebarProfile}>
-        <img
-          className={styles.sidebarProfileAvatar}
-          src="https://avatars.githubusercontent.com/u/88688324"
-        />
+        <img className={styles.sidebarProfileAvatar} src="https://avatars.githubusercontent.com/u/88688324" />
 
         <strong className={styles.sidebarProfileName}>João Procópio</strong>
-        <span className={styles.sidebarProfileOccupation}>
-          Camisa 10 do Botafogo
-        </span>
+        <span className={styles.sidebarProfileOccupation}>Camisa 10 do Botafogo</span>
       </div>
 
       <footer className={styles.sidebarActions}>
