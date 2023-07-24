@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  a {
+  a,
+  button {
     @apply transition-colors duration-100;
   }
 

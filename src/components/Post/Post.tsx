@@ -38,6 +38,16 @@ export function Post() {
           <a href="#">#novoprojeto</a> <a href="#">#nlw</a> <a href="#">#rocketseat</a>
         </p>
       </section>
+
+      <form className={styles.postReply}>
+        <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
+
+        <textarea className={styles.postReplyContent} placeholder="Escreva um comentário..." />
+
+        <button className={styles.postReplyButton} type="submit">
+          Publicar
+        </button>
+      </form>
     </article>
   )
 }

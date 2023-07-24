@@ -17,7 +17,7 @@
     }
 
     &-occupation {
-      @apply text-sm leading-relaxed;
+      @apply text-sm leading-relaxed text-secondary-300;
     }
   }
 
@@ -25,9 +25,9 @@
     @apply w-full border-t border-t-secondary-500 p-8;
 
     &-edit {
-      @apply flex h-14 items-center justify-center gap-2;
+      @apply flex items-center justify-center gap-2;
       @apply rounded-lg border border-primary-400;
-      @apply px-4 py-2;
+      @apply h-12 px-4 py-2;
       @apply bg-transparent font-bold text-primary-400;
       @apply hover:bg-primary-400 hover:text-white;
     }

@@ -26,15 +26,36 @@
   }
 
   &-content {
-    @apply mt-4 leading-relaxed;
-
-    p {
-      @apply mb-2;
-    }
+    @apply flex flex-col gap-2  py-4 leading-relaxed;
 
     a {
       @apply font-bold text-primary-500;
       @apply hover:text-primary-400;
+    }
+  }
+
+  &-reply {
+    @apply border-t border-t-secondary-500 pt-4;
+
+    &-title {
+      @apply font-bold;
+    }
+
+    &-content {
+      @apply mb-8 mt-4;
+      @apply resize-none border-none outline-none;
+      @apply h-24 min-w-full rounded-lg border-0 bg-secondary-700 p-4;
+
+      &::placeholder {
+        @apply text-secondary-400;
+      }
+    }
+
+    &-button {
+      @apply rounded-lg;
+      @apply h-12 px-4 py-2;
+      @apply bg-primary-500 font-bold text-white;
+      @apply hover:bg-primary-400;
     }
   }
 }
