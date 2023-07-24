@@ -1,3 +1,7 @@
 .avatar {
-  @apply box-content h-12 w-12 rounded-lg border-4 border-secondary-600 outline outline-2 outline-primary-400;
+  @apply box-content h-12 w-12 rounded-lg;
+
+  &--outlined {
+    @apply border-4 border-secondary-600 outline outline-2 outline-primary-400;
+  }
 }
