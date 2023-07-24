@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2020", "ESNEXT", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
@@ -20,9 +20,13 @@
     /* Relative paths */
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "baseUrl": "."
   },
-  "include": ["src"],
+  "include": ["./src", "./index.d.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"
