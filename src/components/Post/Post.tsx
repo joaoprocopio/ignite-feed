@@ -1,21 +1,21 @@
 import styles from "./Post.module.scss"
 import { Avatar, Reply } from "~/components"
+import type { TPost } from "~/api/models"
 
-// id: int | string
-// author: { id, avatar, name, occupation }
-// postedAt: Date
-// content: string
+interface Props {
+  post: TPost
+}
 
-export function Post() {
+export function Post({ post }: Props) {
   return (
     <article className={styles.post}>
       <header className={styles.postHeader}>
         <div className={styles.postHeaderAuthor}>
-          <Avatar outlined src="https://github.com/joaoprocopio.png" />
+          <Avatar outlined src={post.author.avatar_url} />
 
           <div className={styles.postHeaderAuthorInfo}>
-            <strong className={styles.postHeaderAuthorInfoName}>João Procópio</strong>
-            <span className={styles.postHeaderAuthorInfoOccupation}>Camisa 10 do Botafogo</span>
+            <strong className={styles.postHeaderAuthorInfoName}>{post.author.full_name}</strong>
+            <span className={styles.postHeaderAuthorInfoOccupation}>{post.author.occupation}</span>
           </div>
         </div>
 
