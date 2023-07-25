@@ -1,5 +1,6 @@
 import { ActiveModelSerializer as BaseSerializer } from "miragejs"
 
+// TODO: refatorar isso
 const convertIdsToNumbers = (o) => {
   Object.keys(o).forEach((k) => {
     const v = o[k]
