@@ -3,7 +3,7 @@ import { z } from "zod"
 export type TAuthor = z.infer<typeof Author>
 
 export const Author = z.object({
-  id: z.string(),
+  id: z.number(),
   full_name: z.string(),
   first_name: z.string(),
   last_name: z.string(),
@@ -17,7 +17,7 @@ export type TPostList = z.infer<typeof PostList>
 export type TPostResponse = z.infer<typeof PostResponse>
 
 export const Post = z.object({
-  id: z.string(),
+  id: z.number(),
   content: z.string(),
   created_at: z.string(),
   author: Author
