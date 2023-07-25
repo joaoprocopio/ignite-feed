@@ -13,9 +13,8 @@
     @apply transition-colors duration-300;
   }
 
-  html,
   body {
     @apply bg-secondary-700 text-secondary-200;
-    @apply scroll-smooth  antialiased;
+    @apply scroll-smooth antialiased;
   }
 }
