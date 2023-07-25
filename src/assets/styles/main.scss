@@ -7,14 +7,14 @@
     @apply outline outline-1 outline-primary-500;
   }
 
+  body {
+    @apply bg-secondary-700 text-secondary-200;
+    @apply scroll-smooth antialiased;
+  }
+
   a,
   button,
   textarea {
     @apply transition-colors duration-300;
-  }
-
-  body {
-    @apply bg-secondary-700 text-secondary-200;
-    @apply scroll-smooth antialiased;
   }
 }
