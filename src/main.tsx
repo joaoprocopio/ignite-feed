@@ -9,9 +9,7 @@ const rootEl = document.getElementById("__react")!
 const root = createRoot(rootEl)
 
 if (env.DEV && env.MOCK) {
-  const { worker } = await import("~/mocks")
-
-  worker.start()
+  //
 }
 
 root.render(
