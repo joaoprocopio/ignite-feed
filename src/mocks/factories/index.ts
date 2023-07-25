@@ -31,13 +31,12 @@ export const factories = {
       return faker.person.jobTitle()
     }
   }),
-
   post: Factory.extend({
     content() {
       return faker.lorem.paragraphs({ min: 1, max: 3 })
     },
-    createdAt() {
-      return faker.date.past()
+    postedAt() {
+      return faker.date.recent()
     },
     authorId() {
       return faker.number.int({ min: 1, max: 30 })

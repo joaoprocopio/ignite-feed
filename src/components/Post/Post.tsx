@@ -1,12 +1,17 @@
 import styles from "./Post.module.scss"
-import { Avatar, Reply } from "~/components"
+
 import type { TPost } from "~/api/models"
+
+import { Avatar, Reply } from "~/components"
+import { now } from "~/utils"
 
 interface Props {
   post: TPost
 }
 
 export function Post({ post }: Props) {
+  const hoursSincePosted = Math.ceil(now().diff(post.posted_at, "hours", true))
+
   return (
     <article className={styles.post}>
       <header className={styles.postHeader}>
@@ -21,9 +26,8 @@ export function Post({ post }: Props) {
 
         <time
           className={styles.postHeaderPostedAt}
-          title="24 de Julho de 2022 às 11:45h"
-          dateTime="2022-07-24 11:45:00">
-          Publicado há 1h
+          title={post.posted_at.format("DD [de] MMMM [de] YYYY [às] HH:mm[h]")}>
+          Publicado há {hoursSincePosted}h
         </time>
       </header>
 

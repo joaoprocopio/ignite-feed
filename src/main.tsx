@@ -1,3 +1,5 @@
+import "~/plugins"
+
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 

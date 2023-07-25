@@ -24,6 +24,7 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "."
   },
   "include": ["./src", "./index.d.ts"],
