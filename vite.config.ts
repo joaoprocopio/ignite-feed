@@ -22,6 +22,7 @@ export default defineConfig({
     }
   },
   publicDir: "./src/public",
+  envPrefix: "_",
   resolve: {
     alias: {
       "~": fileURLToPath(new URL("./src", import.meta.url))
