@@ -1,6 +1,11 @@
 import styles from "./Post.module.scss"
 import { Avatar, Reply } from "~/components"
 
+// id: int | string
+// author: { id, avatar, name, occupation }
+// postedAt: Date
+// content: string
+
 export function Post() {
   return (
     <article className={styles.post}>
@@ -49,6 +54,7 @@ export function Post() {
         </button>
       </form>
 
+      {/* TODO: div em volta */}
       <Reply />
     </article>
   )
