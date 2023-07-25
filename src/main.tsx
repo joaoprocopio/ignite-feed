@@ -14,8 +14,6 @@ if (env.DEV && env.MOCK) {
   worker.start()
 }
 
-console.log(import.meta.env)
-
 root.render(
   <StrictMode>
     <App />
