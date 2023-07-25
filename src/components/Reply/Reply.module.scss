@@ -30,7 +30,7 @@
 
     &-actions {
       &-like {
-        @apply flex gap-2 font-bold text-secondary-300;
+        @apply flex items-center gap-2 font-bold text-secondary-300;
         @apply hover:text-white active:text-primary-400;
       }
     }
