@@ -29,22 +29,7 @@ export function Post({ post }: Props) {
         </time>
       </header>
 
-      <section className={styles.postContent}>
-        <p>Fala galeraa 👋</p>
-        <p>
-          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O
-          nome do projeto é DoctorCare 🚀
-        </p>
-        <p>
-          👉{" "}
-          <a href="#" className="font-bold text-primary-400">
-            jane.design/doctorcare
-          </a>
-        </p>
-        <p>
-          <a href="#">#novoprojeto</a> <a href="#">#nlw</a> <a href="#">#rocketseat</a>
-        </p>
-      </section>
+      <section className={styles.postContent}>{post.content}</section>
 
       <form className={styles.postReply} onSubmit={(e) => e.preventDefault()}>
         <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
