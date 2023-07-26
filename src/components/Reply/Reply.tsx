@@ -22,8 +22,7 @@ export function Reply({ reply }: Props) {
               <div className={styles.replyContainerBoxMetaAuthor}>{reply.author.full_name}</div>
               <time
                 className={styles.replyContainerBoxMetaPostedAt}
-                title="24 de Julho de 2022 às 11:45h"
-                dateTime="2022-07-24 11:45:00">
+                title={reply.created_at.format("DD [de] MMMM [de] YYYY [às] HH:mm[h]")}>
                 Cerca de {Math.ceil(now().diff(reply.created_at, "hours", true))}h
               </time>
             </div>
