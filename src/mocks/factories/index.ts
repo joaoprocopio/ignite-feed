@@ -36,7 +36,7 @@ export const factories = {
   }),
   post: Factory.extend({
     content() {
-      return faker.lorem.paragraphs({ min: 1, max: 3 })
+      return faker.lorem.paragraphs({ min: 1, max: 5 })
     },
     createdAt() {
       return faker.date.recent()
