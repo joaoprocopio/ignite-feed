@@ -3,8 +3,8 @@ import dayjs from "dayjs"
 
 export type TAuthor = z.infer<typeof Author>
 
-export type TComment = z.infer<typeof Comment>
-export type TCommentList = z.infer<typeof CommentList>
+export type TReply = z.infer<typeof Reply>
+export type TReplyList = z.infer<typeof ReplyList>
 
 export type TPost = z.infer<typeof Post>
 export type TPostList = z.infer<typeof PostList>
@@ -20,15 +20,19 @@ export const Author = z.object({
   occupation: z.string()
 })
 
-export const Comment = z.object({
-  content: z.string()
+export const Reply = z.object({
+  id: z.number(),
+  content: z.string(),
+  created_at: z.string().transform((date) => dayjs(date)),
+  author: Author
 })
-export const CommentList = z.array(Comment)
+export const ReplyList = z.array(Reply)
 
 export const Post = z.object({
   id: z.number(),
   content: z.string(),
-  posted_at: z.string().transform((date) => dayjs(date)),
+  created_at: z.string().transform((date) => dayjs(date)),
+  reply: ReplyList,
   author: Author
 })
 export const PostList = z.array(Post)

@@ -27,6 +27,6 @@ const Serializer = (toSerialize: string[] = []) =>
 
 export const serializers = {
   author: Serializer(),
-  post: Serializer(["author", "comment"]),
-  comment: Serializer()
+  post: Serializer(["author", "reply"]),
+  reply: Serializer(["author"])
 }

@@ -3,10 +3,11 @@ import { Model, belongsTo, hasMany } from "miragejs"
 export const models = {
   post: Model.extend({
     author: belongsTo(),
-    comment: hasMany()
+    reply: hasMany()
   }),
-  comment: Model.extend({
-    post: belongsTo()
+  reply: Model.extend({
+    post: belongsTo(),
+    author: belongsTo()
   }),
   author: Model
 }

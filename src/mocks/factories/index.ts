@@ -3,7 +3,7 @@ import { Factory } from "miragejs"
 import { faker } from "@faker-js/faker"
 
 import { random } from "~/utils"
-import { commentSeeds } from "~/mocks/seeds"
+import { replySeeds, postSeeds, authorSeeds } from "~/mocks/seeds"
 
 export const factories = {
   author: Factory.extend({
@@ -38,19 +38,25 @@ export const factories = {
     content() {
       return faker.lorem.paragraphs({ min: 1, max: 3 })
     },
-    postedAt() {
+    createdAt() {
       return faker.date.recent()
     },
     authorId() {
-      return faker.number.int({ min: 1, max: 30 })
+      return faker.number.int({ min: 1, max: authorSeeds })
     },
-    commentIds() {
-      return new Array(random(1, 5)).fill(null).map(() => random(1, commentSeeds))
+    replyIds() {
+      return new Array(parseInt(random(1, postSeeds / 10))).fill(null).map(() => random(1, replySeeds))
     }
   }),
-  comment: Factory.extend({
+  reply: Factory.extend({
     content() {
       return faker.lorem.paragraphs({ min: 1, max: 2 })
+    },
+    authorId() {
+      return faker.number.int({ min: 1, max: authorSeeds })
+    },
+    createdAt() {
+      return faker.date.recent()
     }
   })
 }

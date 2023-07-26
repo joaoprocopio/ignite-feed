@@ -10,8 +10,6 @@ interface Props {
 }
 
 export function Post({ post }: Props) {
-  const hoursSincePosted = Math.ceil(now().diff(post.posted_at, "hours", true))
-
   return (
     <article className={styles.post}>
       <header className={styles.postHeader}>
@@ -26,8 +24,8 @@ export function Post({ post }: Props) {
 
         <time
           className={styles.postHeaderPostedAt}
-          title={post.posted_at.format("DD [de] MMMM [de] YYYY [às] HH:mm[h]")}>
-          Publicado há {hoursSincePosted}h
+          title={post.created_at.format("DD [de] MMMM [de] YYYY [às] HH:mm[h]")}>
+          Publicado há {Math.ceil(now().diff(post.created_at, "hours", true))}h
         </time>
       </header>
 
@@ -58,8 +56,9 @@ export function Post({ post }: Props) {
         </button>
       </form>
 
-      {/* TODO: div em volta */}
-      <Reply />
+      {post.reply.map((reply, iter) => {
+        return <Reply key={`${post.id}-${reply.id}-${iter}`} reply={reply} />
+      })}
     </article>
   )
 }
