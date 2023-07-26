@@ -3,6 +3,13 @@ import dayjs from "dayjs"
 
 export type TAuthor = z.infer<typeof Author>
 
+export type TComment = z.infer<typeof Comment>
+export type TCommentList = z.infer<typeof CommentList>
+
+export type TPost = z.infer<typeof Post>
+export type TPostList = z.infer<typeof PostList>
+export type TPostResponse = z.infer<typeof PostResponse>
+
 export const Author = z.object({
   id: z.number(),
   full_name: z.string(),
@@ -13,9 +20,10 @@ export const Author = z.object({
   occupation: z.string()
 })
 
-export type TPost = z.infer<typeof Post>
-export type TPostList = z.infer<typeof PostList>
-export type TPostResponse = z.infer<typeof PostResponse>
+export const Comment = z.object({
+  content: z.string()
+})
+export const CommentList = z.array(Comment)
 
 export const Post = z.object({
   id: z.number(),

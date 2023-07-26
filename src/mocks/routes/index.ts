@@ -1,4 +1,4 @@
-import type { Server, Schema } from "~/mocks/utils"
+import type { Server, Schema } from "~/mocks/@types"
 import { Response } from "miragejs"
 
 export function routes(this: Server) {

@@ -2,6 +2,9 @@
 import { Factory } from "miragejs"
 import { faker } from "@faker-js/faker"
 
+import { random } from "~/utils"
+import { commentSeeds } from "~/mocks/seeds"
+
 export const factories = {
   author: Factory.extend({
     username() {
@@ -40,6 +43,14 @@ export const factories = {
     },
     authorId() {
       return faker.number.int({ min: 1, max: 30 })
+    },
+    commentIds() {
+      return new Array(random(1, 5)).fill(null).map(() => random(1, commentSeeds))
+    }
+  }),
+  comment: Factory.extend({
+    content() {
+      return faker.lorem.paragraphs({ min: 1, max: 2 })
     }
   })
 }
