@@ -7,6 +7,15 @@
     @apply outline outline-1 outline-primary-500;
   }
 
+  html,
+  body {
+    @apply h-full;
+  }
+
+  #__react {
+    @apply min-h-full;
+  }
+
   html {
     @apply text-xs sm:text-sm md:text-base;
   }

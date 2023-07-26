@@ -7,19 +7,21 @@ import { Header, Sidebar, Post } from "~/components"
 import { PostsAPI } from "~/api"
 
 export function App() {
+  const skeletons = new Array(3).fill(null)
+  const [fetching, setFetching] = useState<boolean>(true)
   const [posts, setPosts] = useState<TPostList>([])
 
-  const fetchPosts = async () => {
-    try {
-      const response = await PostsAPI.getPosts()
-
-      setPosts(response.posts)
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
   useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await PostsAPI.getPosts()
+
+        setPosts(response.posts)
+      } finally {
+        setFetching(false)
+      }
+    }
+
     fetchPosts()
   }, [])
 
@@ -30,9 +32,15 @@ export function App() {
         <Sidebar />
 
         <main className={styles.content}>
-          {posts.map((post) => {
-            return <Post key={post.id} post={post} />
-          })}
+          {fetching &&
+            skeletons.map((_, id) => {
+              return <div key={id} className="h-96 w-full animate-pulse rounded-lg bg-secondary-600" />
+            })}
+
+          {!fetching &&
+            posts.map((post) => {
+              return <Post key={post.id} post={post} />
+            })}
         </main>
       </div>
     </>

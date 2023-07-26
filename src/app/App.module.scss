@@ -1,8 +1,8 @@
 .container {
-  @apply mx-auto max-w-6xl gap-8 p-8;
+  @apply mx-auto h-full max-w-6xl gap-8 p-8;
   @apply grid items-start sm:grid-cols-[256px,1fr];
 }
 
 .content {
-  @apply flex flex-col gap-8;
+  @apply flex h-full flex-col gap-8;
 }
