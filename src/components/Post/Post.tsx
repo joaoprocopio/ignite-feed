@@ -7,9 +7,10 @@ import { getHourDiff, formatDateTime } from "~/utils"
 
 interface Props {
   post: TPost
+  onSubmit: React.DOMAttributes<HTMLFormElement>["onSubmit"]
 }
 
-export function Post({ post }: Props) {
+export function Post({ post, onSubmit }: Props) {
   return (
     <article className={styles.post}>
       <header className={styles.postHeader}>
@@ -29,10 +30,10 @@ export function Post({ post }: Props) {
 
       <section className={styles.postContent}>{post.content}</section>
 
-      <form className={styles.postReply} onSubmit={(e) => e.preventDefault()}>
+      <form className={styles.postReply} onSubmit={onSubmit}>
         <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
 
-        <textarea className={styles.postReplyText} placeholder="Escreva um comentário..." />
+        <textarea name="content" className={styles.postReplyText} placeholder="Escreva um comentário..." />
 
         <button className={styles.postReplyButton} type="submit">
           Publicar

@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import type { Server, Schema } from "~/mocks/@types"
-import { Response } from "miragejs"
+import { Request, Response } from "miragejs"
 
 export function routes(this: Server) {
   this.get("/posts", function (schema: Schema) {
@@ -14,5 +14,23 @@ export function routes(this: Server) {
     }))
 
     return new Response(200, {}, { posts })
+  })
+
+  this.post("replies/create", (schema: Schema, request: Request) => {
+    const body = JSON.parse(request?.requestBody)
+    const content = body?.content
+    const postId = body?.post_id
+
+    if (!content || !postId) return new Response(400, {}, {})
+
+    const post = schema.findBy("post", { id: postId })
+
+    const reply = schema.create("reply", {
+      content: content,
+      createdAt: new Date().toISOString(),
+      authorId: post?.authorId
+    })
+
+    return new Response(200, {}, reply)
   })
 }
