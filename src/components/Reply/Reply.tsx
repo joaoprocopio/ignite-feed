@@ -4,7 +4,7 @@ import type { TReply } from "~/api/models"
 
 import styles from "./Reply.module.scss"
 import { Avatar } from "~/components"
-import { getHourDiff, formatDateTime } from "~/utils"
+import { formatDateTime, relativeTimeDiff } from "~/utils"
 
 interface Props {
   reply: TReply
@@ -21,7 +21,7 @@ export function Reply({ reply }: Props) {
             <div>
               <div className={styles.replyContainerBoxMetaAuthor}>{reply.author.full_name}</div>
               <time className={styles.replyContainerBoxMetaPostedAt} title={formatDateTime(reply.created_at)}>
-                Cerca de {getHourDiff(reply.created_at)}h
+                Cerca de {relativeTimeDiff(reply.created_at)}
               </time>
             </div>
 

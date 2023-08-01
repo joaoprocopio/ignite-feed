@@ -3,7 +3,7 @@ import styles from "./Post.module.scss"
 import type { TPost } from "~/api/models"
 
 import { Avatar, Reply } from "~/components"
-import { getHourDiff, formatDateTime } from "~/utils"
+import { formatDateTime, relativeTimeDiff } from "~/utils"
 
 interface Props {
   post: TPost
@@ -24,7 +24,7 @@ export function Post({ post, onSubmit }: Props) {
         </div>
 
         <time className={styles.postHeaderPostedAt} title={formatDateTime(post.created_at)}>
-          Publicado há {getHourDiff(post.created_at)}h
+          Publicado há {relativeTimeDiff(post.created_at)}
         </time>
       </header>
 
