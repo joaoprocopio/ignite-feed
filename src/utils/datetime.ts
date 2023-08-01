@@ -1,6 +1,19 @@
-import "dayjs/locale/pt-br"
-import dayjs from "dayjs"
+export const now = () => new Date()
 
-dayjs.locale("pt-br")
+export const formatter = (options: Intl.DateTimeFormatOptions) => {
+  return new Intl.DateTimeFormat("pt-br", options)
+}
 
-export const now = () => dayjs()
+export const formatDateTime = (date: Date) => {
+  return formatter({
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric"
+  }).format(date)
+}
+
+export const getHourDiff = (past: Date, present: Date = now()) => {
+  return Math.ceil(Math.abs(present.getTime() - past.getTime()) / 36e5)
+}

@@ -1,5 +1,4 @@
 import { z } from "zod"
-import dayjs from "dayjs"
 
 export type TAuthor = z.infer<typeof Author>
 
@@ -23,7 +22,7 @@ export const Author = z.object({
 export const Reply = z.object({
   id: z.number(),
   content: z.string(),
-  created_at: z.string().transform((date) => dayjs(date)),
+  created_at: z.string().transform((date) => new Date(date)),
   author: Author
 })
 export const ReplyList = z.array(Reply)
@@ -31,7 +30,7 @@ export const ReplyList = z.array(Reply)
 export const Post = z.object({
   id: z.number(),
   content: z.string(),
-  created_at: z.string().transform((date) => dayjs(date)),
+  created_at: z.string().transform((date) => new Date(date)),
   reply: ReplyList,
   author: Author
 })
