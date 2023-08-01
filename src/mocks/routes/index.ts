@@ -1,6 +1,8 @@
 // @ts-nocheck
 
 import type { Server, Schema } from "~/mocks/@types"
+import { authorSeeds } from "~/mocks/seeds"
+import { random } from "~/utils"
 import { Request, Response } from "miragejs"
 
 export function routes(this: Server) {
@@ -32,5 +34,11 @@ export function routes(this: Server) {
     })
 
     return new Response(200, {}, reply)
+  })
+
+  this.get("/authors/current", (schema: Schema) => {
+    const author = schema.findBy("author", { id: random(1, authorSeeds) })
+
+    return new Response(200, {}, author)
   })
 }

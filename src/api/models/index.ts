@@ -16,6 +16,7 @@ export const Author = z.object({
   last_name: z.string(),
   username: z.string(),
   avatar_url: z.string(),
+  cover_image_url: z.string(),
   occupation: z.string()
 })
 

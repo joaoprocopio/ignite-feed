@@ -2,13 +2,17 @@ import { useEffect, useState } from "react"
 
 import styles from "./App.module.scss"
 
-import { usePostsStore } from "~/stores"
-import { Header, Sidebar, Post } from "~/components"
-import { PostsAPI, RepliesAPI } from "~/api"
+import { usePostsStore, useAuthorStore } from "~/stores"
+import { Header, Sidebar, Post, Skeleton } from "~/components"
+import { PostsAPI, RepliesAPI, AuthorsAPI } from "~/api"
 
 export function App() {
   const skeletons: null[] = new Array(3).fill(null)
-  const [fetching, setFetching] = useState<boolean>(true)
+
+  const [fetchingAuthor, setFetchingAuthor] = useState<boolean>(true)
+  const [fetchingPosts, setFetchingPosts] = useState<boolean>(true)
+
+  const { author, setAuthor } = useAuthorStore()
   const { posts, setPosts, setPostsReply } = usePostsStore()
 
   const handleCreateComment = async (e: React.FormEvent<HTMLFormElement>, postId: number) => {
@@ -21,13 +25,27 @@ export function App() {
   }
 
   useEffect(() => {
+    const fetchAuthor = async () => {
+      try {
+        const response = await AuthorsAPI.getCurrentAuthor()
+
+        setAuthor(response)
+      } finally {
+        setFetchingAuthor(false)
+      }
+    }
+
+    fetchAuthor()
+  }, [setAuthor])
+
+  useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await PostsAPI.getPosts()
 
         setPosts(response.posts)
       } finally {
-        setFetching(false)
+        setFetchingPosts(false)
       }
     }
 
@@ -37,13 +55,14 @@ export function App() {
   return (
     <>
       <Header />
+
       <div className={styles.container}>
-        <Sidebar />
+        {fetchingAuthor ? <Skeleton customClass="h-72 bg-secondary-600" /> : <Sidebar author={author} />}
 
         <main className={styles.content}>
-          {fetching
+          {fetchingPosts
             ? skeletons.map((_, id) => {
-                return <div key={id} className="h-96 w-full animate-pulse rounded-lg bg-secondary-600" />
+                return <Skeleton key={id} customClass="h-96 bg-secondary-600" />
               })
             : posts.map((post) => {
                 return <Post key={post.id} post={post} onSubmit={(e) => handleCreateComment(e, post.id)} />

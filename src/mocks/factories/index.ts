@@ -30,6 +30,9 @@ export const factories = {
     avatarUrl() {
       return faker.internet.avatar()
     },
+    coverImageUrl() {
+      return faker.image.urlPlaceholder({ width: 256, height: 80 })
+    },
     occupation() {
       return faker.person.jobTitle()
     }
@@ -45,7 +48,7 @@ export const factories = {
       return faker.number.int({ min: 1, max: authorSeeds })
     },
     replyIds() {
-      return new Array(parseInt(random(1, postSeeds / 10))).fill(null).map(() => random(1, replySeeds))
+      return new Array(parseInt(random(1, 3))).fill(null).map(() => random(1, replySeeds))
     }
   }),
   reply: Factory.extend({

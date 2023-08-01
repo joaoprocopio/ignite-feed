@@ -1,6 +1,6 @@
 import { $axios } from "./clients"
 
-import { PostResponse, Reply } from "~/api/models"
+import { Author, PostResponse, Reply } from "~/api/models"
 
 export const PostsAPI = {
   getPosts: async () => {
@@ -15,5 +15,13 @@ export const RepliesAPI = {
     const response = await $axios.post("replies/create", { post_id: postId, content })
 
     return Reply.parse(response.data)
+  }
+}
+
+export const AuthorsAPI = {
+  getCurrentAuthor: async () => {
+    const response = await $axios.get("/authors/current")
+
+    return Author.parse(response.data)
   }
 }
