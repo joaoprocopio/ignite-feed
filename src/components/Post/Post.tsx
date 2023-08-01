@@ -7,10 +7,10 @@ import { formatDateTime, relativeTimeDiff } from "~/utils"
 
 interface Props {
   post: TPost
-  onSubmit: React.DOMAttributes<HTMLFormElement>["onSubmit"]
+  handleCreateComment: React.DOMAttributes<HTMLFormElement>["onSubmit"]
 }
 
-export function Post({ post, onSubmit }: Props) {
+export function Post({ post, handleCreateComment }: Props) {
   return (
     <article className={styles.post}>
       <header className={styles.postHeader}>
@@ -30,7 +30,7 @@ export function Post({ post, onSubmit }: Props) {
 
       <section className={styles.postContent}>{post.content}</section>
 
-      <form className={styles.postReply} onSubmit={onSubmit}>
+      <form className={styles.postReply} onSubmit={handleCreateComment}>
         <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
 
         <textarea name="content" className={styles.postReplyText} placeholder="Escreva um comentário..." />

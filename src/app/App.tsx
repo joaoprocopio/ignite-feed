@@ -65,7 +65,7 @@ export function App() {
                 return <Skeleton key={id} customClass="h-96 bg-secondary-600" />
               })
             : posts.map((post) => {
-                return <Post key={post.id} post={post} onSubmit={(e) => handleCreateComment(e, post.id)} />
+                return <Post key={post.id} post={post} handleCreateComment={(e) => handleCreateComment(e, post.id)} />
               })}
         </main>
       </div>
