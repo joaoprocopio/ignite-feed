@@ -16,8 +16,8 @@ const Serializer = (toSerialize: string[] = []) =>
     root: false,
     embed: true,
     include: toSerialize,
-    serialize() {
-      const json = BaseSerializer.prototype.serialize.apply(this, arguments)
+    serialize(...args) {
+      const json = BaseSerializer.prototype.serialize.apply(this, args)
 
       convertIdsToNumbers(json)
 
