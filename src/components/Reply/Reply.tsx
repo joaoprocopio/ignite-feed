@@ -5,12 +5,15 @@ import type { TReply } from "~/api/models"
 import styles from "./Reply.module.scss"
 import { Avatar } from "~/components"
 import { formatDateTime, relativeTimeDiff } from "~/utils"
+import { useAuthorStore } from "~/stores"
 
 interface Props {
   reply: TReply
 }
 
 export function Reply({ reply }: Props) {
+  const { author } = useAuthorStore()
+
   return (
     <div className={styles.reply}>
       <Avatar src={reply.author.avatar_url} />
@@ -26,7 +29,7 @@ export function Reply({ reply }: Props) {
             </div>
 
             <button className={styles.replyContainerBoxMetaDelete}>
-              <Trash size={24} />
+              {author.id === reply.author.id && <Trash size={24} />}
             </button>
           </header>
 
@@ -36,6 +39,7 @@ export function Reply({ reply }: Props) {
         <footer className={styles.replyContainerActions}>
           <button className={styles.replyContainerActionsLike}>
             <ThumbsUp size={20} weight="bold" />
+
             <span>Aplaudir • 33</span>
           </button>
         </footer>
