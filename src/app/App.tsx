@@ -2,14 +2,14 @@ import { useEffect, useState } from "react"
 
 import styles from "./App.module.scss"
 
-import type { TPostList } from "~/api/models"
+import { usePostsStore } from "~/stores"
 import { Header, Sidebar, Post } from "~/components"
 import { PostsAPI } from "~/api"
 
 export function App() {
-  const skeletons = new Array(3).fill(null)
+  const skeletons: null[] = new Array(3).fill(null)
   const [fetching, setFetching] = useState<boolean>(true)
-  const [posts, setPosts] = useState<TPostList>([])
+  const { posts, setPosts } = usePostsStore()
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -23,7 +23,7 @@ export function App() {
     }
 
     fetchPosts()
-  }, [])
+  }, [setPosts])
 
   return (
     <>
@@ -32,15 +32,13 @@ export function App() {
         <Sidebar />
 
         <main className={styles.content}>
-          {fetching &&
-            skeletons.map((_, id) => {
-              return <div key={id} className="h-96 w-full animate-pulse rounded-lg bg-secondary-600" />
-            })}
-
-          {!fetching &&
-            posts.map((post) => {
-              return <Post key={post.id} post={post} />
-            })}
+          {fetching
+            ? skeletons.map((_, id) => {
+                return <div key={id} className="h-96 w-full animate-pulse rounded-lg bg-secondary-600" />
+              })
+            : posts.map((post) => {
+                return <Post key={post.id} post={post} />
+              })}
         </main>
       </div>
     </>
