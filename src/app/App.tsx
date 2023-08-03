@@ -15,7 +15,7 @@ export function App() {
   const { author, setAuthor } = useAuthorStore()
   const { posts, setPosts, setPostsReply } = usePostsStore()
 
-  const handleCreateComment = async (e: React.FormEvent<HTMLFormElement>, postId: number) => {
+  const handleCreateReply = async (e: React.FormEvent<HTMLFormElement>, postId: number) => {
     e.preventDefault()
 
     const content = (e.target as HTMLFormElement).content.value
@@ -65,7 +65,14 @@ export function App() {
                 return <Skeleton key={id} customClass="h-96 bg-secondary-600" />
               })
             : posts.map((post) => {
-                return <Post key={post.id} post={post} handleCreateComment={(e) => handleCreateComment(e, post.id)} />
+                return (
+                  <Post
+                    key={post.id}
+                    post={post}
+                    currentAuthor={author}
+                    handleCreateReply={(event) => handleCreateReply(event, post.id)}
+                  />
+                )
               })}
         </main>
       </div>

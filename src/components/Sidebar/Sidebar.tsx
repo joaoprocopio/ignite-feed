@@ -16,8 +16,8 @@ export function Sidebar({ author }: Props) {
       <div className={styles.sidebarProfile}>
         <Avatar outlined customClass={styles.sidebarProfileAvatar} src={author.avatar_url} />
 
-        <strong className={styles.sidebarProfileName}>{author?.first_name}</strong>
-        <span className={styles.sidebarProfileOccupation}>{author?.occupation}</span>
+        <strong className={styles.sidebarProfileName}>{author.full_name}</strong>
+        <span className={styles.sidebarProfileOccupation}>{author.occupation}</span>
       </div>
 
       <footer className={styles.sidebarActions}>

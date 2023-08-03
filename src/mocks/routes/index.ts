@@ -1,9 +1,13 @@
 // @ts-nocheck
 
+import { Request, Response } from "miragejs"
+import Cookies from "js-cookie"
+import random from "lodash/random"
+
 import type { Server, Schema } from "~/mocks/@types"
 import { authorSeeds } from "~/mocks/seeds"
-import { random } from "~/utils"
-import { Request, Response } from "miragejs"
+
+const cookie = "authorid"
 
 export function routes(this: Server) {
   this.get("/posts", function (schema: Schema) {
@@ -20,6 +24,9 @@ export function routes(this: Server) {
 
   this.post("replies/create", (schema: Schema, request: Request) => {
     const body = JSON.parse(request?.requestBody)
+
+    if (!body) return new Response(400, {}, {})
+
     const content = body?.content
     const postId = body?.post_id
 
@@ -36,8 +43,12 @@ export function routes(this: Server) {
     return new Response(200, {}, reply)
   })
 
-  this.get("/authors/current", (schema: Schema) => {
+  this.get("authors/current", (schema: Schema) => {
     const author = schema.findBy("author", { id: random(1, authorSeeds) })
+
+    if (!author?.id) return new Response(404, {}, {})
+
+    Cookies.set(cookie, author.id)
 
     return new Response(200, {}, author)
   })

@@ -1,16 +1,19 @@
 import styles from "./Post.module.scss"
 
-import type { TPost } from "~/api/models"
+import type { TAuthor, TPost } from "~/api/models"
 
 import { Avatar, Reply } from "~/components"
 import { formatDateTime, relativeTimeDiff } from "~/utils"
 
 interface Props {
   post: TPost
-  handleCreateComment: React.DOMAttributes<HTMLFormElement>["onSubmit"]
+  currentAuthor: TAuthor
+  handleCreateReply: React.DOMAttributes<HTMLFormElement>["onSubmit"]
 }
 
-export function Post({ post, handleCreateComment }: Props) {
+export function Post({ post, currentAuthor, handleCreateReply }: Props) {
+  const canDeleteReply = (currentAuthorId: number, replyAuthorId: number): boolean => currentAuthorId === replyAuthorId
+
   return (
     <article className={styles.post}>
       <header className={styles.postHeader}>
@@ -30,7 +33,7 @@ export function Post({ post, handleCreateComment }: Props) {
 
       <section className={styles.postContent}>{post.content}</section>
 
-      <form className={styles.postReply} onSubmit={handleCreateComment}>
+      <form className={styles.postReply} onSubmit={handleCreateReply}>
         <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
 
         <textarea name="content" className={styles.postReplyText} placeholder="Escreva um comentário..." />
@@ -40,8 +43,8 @@ export function Post({ post, handleCreateComment }: Props) {
         </button>
       </form>
 
-      {post.reply.map((reply, iter) => {
-        return <Reply key={`${post.id}-${reply.id}-${iter}`} reply={reply} />
+      {post.reply.map((reply) => {
+        return <Reply key={reply.id} reply={reply} canDeleteReply={canDeleteReply(currentAuthor.id, reply.author.id)} />
       })}
     </article>
   )

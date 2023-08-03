@@ -1,9 +1,13 @@
 // @ts-nocheck
+import sampleSize from "lodash/sampleSize"
+import random from "lodash/random"
+import range from "lodash/range"
+import shuffle from "lodash/shuffle"
+
 import { Factory } from "miragejs"
 import { faker } from "@faker-js/faker"
 
-import { random } from "~/utils"
-import { replySeeds, postSeeds, authorSeeds } from "~/mocks/seeds"
+import { replySeeds, authorSeeds } from "~/mocks/seeds"
 
 export const factories = {
   author: Factory.extend({
@@ -48,7 +52,7 @@ export const factories = {
       return faker.number.int({ min: 1, max: authorSeeds })
     },
     replyIds() {
-      return new Array(parseInt(random(1, 3))).fill(null).map(() => random(1, replySeeds))
+      return sampleSize(shuffle(range(1, replySeeds)), random(1, 3))
     }
   }),
   reply: Factory.extend({
