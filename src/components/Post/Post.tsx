@@ -18,7 +18,10 @@ export function Post({ post, currentAuthor, handleCreateReply }: Props) {
     <article className={styles.post}>
       <header className={styles.postHeader}>
         <div className={styles.postHeaderAuthor}>
-          <Avatar outlined src={post.author.avatar_url} />
+          <Avatar
+            outlined
+            src={post.author.avatar_url}
+          />
 
           <div className={styles.postHeaderAuthorInfo}>
             <strong className={styles.postHeaderAuthorInfoName}>{post.author.full_name}</strong>
@@ -26,25 +29,41 @@ export function Post({ post, currentAuthor, handleCreateReply }: Props) {
           </div>
         </div>
 
-        <time className={styles.postHeaderPostedAt} title={formatDateTime(post.created_at)}>
+        <time
+          className={styles.postHeaderPostedAt}
+          title={formatDateTime(post.created_at)}>
           Publicado há {relativeTimeDiff(post.created_at)}
         </time>
       </header>
 
       <section className={styles.postContent}>{post.content}</section>
 
-      <form className={styles.postReply} onSubmit={handleCreateReply}>
+      <form
+        className={styles.postReply}
+        onSubmit={handleCreateReply}>
         <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
 
-        <textarea name="content" className={styles.postReplyText} placeholder="Escreva um comentário..." />
+        <textarea
+          name="content"
+          className={styles.postReplyText}
+          placeholder="Escreva um comentário..."
+        />
 
-        <button className={styles.postReplyButton} type="submit">
+        <button
+          className={styles.postReplyButton}
+          type="submit">
           Publicar
         </button>
       </form>
 
       {post.reply.map((reply) => {
-        return <Reply key={reply.id} reply={reply} canDeleteReply={canDeleteReply(currentAuthor.id, reply.author.id)} />
+        return (
+          <Reply
+            key={reply.id}
+            reply={reply}
+            canDeleteReply={canDeleteReply(currentAuthor.id, reply.author.id)}
+          />
+        )
       })}
     </article>
   )

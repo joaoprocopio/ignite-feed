@@ -15,5 +15,10 @@ export function Avatar({ src, outlined, customClass }: Props) {
     [`${customClass}`]: !!customClass
   })
 
-  return <img className={classes} src={src} />
+  return (
+    <img
+      className={classes}
+      src={src}
+    />
+  )
 }

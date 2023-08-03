@@ -21,7 +21,9 @@ export function Reply({ reply, canDeleteReply }: Props) {
           <header className={styles.replyContainerBoxMeta}>
             <div>
               <div className={styles.replyContainerBoxMetaAuthor}>{reply.author.full_name}</div>
-              <time className={styles.replyContainerBoxMetaPostedAt} title={formatDateTime(reply.created_at)}>
+              <time
+                className={styles.replyContainerBoxMetaPostedAt}
+                title={formatDateTime(reply.created_at)}>
                 Cerca de {relativeTimeDiff(reply.created_at)}
               </time>
             </div>
@@ -34,7 +36,10 @@ export function Reply({ reply, canDeleteReply }: Props) {
 
         <footer className={styles.replyContainerActions}>
           <button className={styles.replyContainerActionsLike}>
-            <ThumbsUp size={20} weight="bold" />
+            <ThumbsUp
+              size={20}
+              weight="bold"
+            />
 
             <span>Aplaudir</span>
           </button>

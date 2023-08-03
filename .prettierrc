@@ -1,11 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/prettierrc",
   "bracketSameLine": true,
-  "arrowParens": "always",
-  "bracketSpacing": true,
-  "jsxSingleQuote": false,
   "singleAttributePerLine": true,
-  "singleQuote": false,
   "semi": false,
   "printWidth": 120,
   "trailingComma": "none",

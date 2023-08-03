@@ -62,7 +62,12 @@ export function App() {
         <main className={styles.content}>
           {fetchingPosts
             ? skeletons.map((_, id) => {
-                return <Skeleton key={id} customClass="h-96 bg-secondary-600" />
+                return (
+                  <Skeleton
+                    key={id}
+                    customClass="h-96 bg-secondary-600"
+                  />
+                )
               })
             : posts.map((post) => {
                 return (
