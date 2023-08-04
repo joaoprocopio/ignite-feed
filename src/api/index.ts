@@ -15,6 +15,12 @@ export const RepliesAPI = {
     const response = await $axios.post("replies/create", { post_id: postId, content })
 
     return Reply.parse(response.data)
+  },
+
+  deleteReply: async (replyId: number) => {
+    const response = await $axios.post("replies/delete", { reply_id: replyId })
+
+    return response.data
   }
 }
 

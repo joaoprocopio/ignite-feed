@@ -16,10 +16,6 @@
     @apply min-h-full;
   }
 
-  html {
-    @apply text-xs sm:text-sm md:text-base;
-  }
-
   body {
     @apply bg-secondary-700 text-secondary-200;
     @apply scroll-smooth antialiased;

@@ -13,7 +13,7 @@ export function App() {
   const [fetchingPosts, setFetchingPosts] = useState<boolean>(true)
 
   const { author, setAuthor } = useAuthorStore()
-  const { posts, setPosts, setPostsReply } = usePostsStore()
+  const { posts, setPosts, setPostsReply, deletePostsReply } = usePostsStore()
 
   const handleCreateReply = async (e: React.FormEvent<HTMLFormElement>, postId: number) => {
     e.preventDefault()
@@ -22,6 +22,14 @@ export function App() {
     const reply = await RepliesAPI.createReply(postId, content)
 
     setPostsReply(postId, reply)
+  }
+
+  const handleDeleteReply = async (replyId: number, postId: number) => {
+    try {
+      await RepliesAPI.deleteReply(replyId)
+
+      deletePostsReply(postId, replyId)
+    } catch (e) {}
   }
 
   useEffect(() => {
@@ -76,6 +84,7 @@ export function App() {
                     post={post}
                     currentAuthor={author}
                     handleCreateReply={(event) => handleCreateReply(event, post.id)}
+                    handleDeleteReply={(replyId, postId) => handleDeleteReply(replyId, postId)}
                   />
                 )
               })}

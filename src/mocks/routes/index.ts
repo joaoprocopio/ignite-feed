@@ -2,12 +2,8 @@
 
 import { Request, Response } from "miragejs"
 import Cookies from "js-cookie"
-import random from "lodash/random"
 
 import type { Server, Schema } from "~/mocks/@types"
-import { authorSeeds } from "~/mocks/seeds"
-
-const cookie = "authorid"
 
 export function routes(this: Server) {
   this.get("/posts", function (schema: Schema) {
@@ -43,12 +39,31 @@ export function routes(this: Server) {
     return new Response(200, {}, reply)
   })
 
+  this.post("replies/delete", (schema: Schema, request: Request) => {
+    const body = JSON.parse(request?.requestBody)
+
+    if (!body) return new Response(400, {}, {})
+
+    const replyId = parseInt(body?.reply_id)
+
+    if (!replyId) return new Response(400, {}, {})
+
+    const reply = schema.findBy("reply", { id: replyId })
+    const authorId = parseInt(Cookies.get("authorid"))
+
+    if (!authorId || reply?.authorId !== authorId) return new Response(401, {}, {}) // TODO: tem bug aqui
+
+    reply.destroy()
+
+    return new Response(200, {}, {})
+  })
+
   this.get("authors/current", (schema: Schema) => {
-    const author = schema.findBy("author", { id: random(1, authorSeeds) })
+    const author = schema.findBy("author", { id: 1 })
 
     if (!author?.id) return new Response(404, {}, {})
 
-    Cookies.set(cookie, author.id)
+    Cookies.set("authorid", author.id)
 
     return new Response(200, {}, author)
   })

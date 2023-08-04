@@ -19,7 +19,7 @@
         }
 
         &-delete {
-          @apply text-secondary-300 focus:outline-danger active:text-danger;
+          @apply text-secondary-300 hover:text-danger focus:outline-danger active:text-danger;
         }
       }
 

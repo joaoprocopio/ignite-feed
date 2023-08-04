@@ -9,7 +9,7 @@ import { factories } from "./factories"
 export const createServer = ({ environment = "development" } = {}) =>
   new Server({
     urlPrefix: "/api",
-    timing: 3000,
+    timing: 1000,
     environment,
     models,
     serializers,

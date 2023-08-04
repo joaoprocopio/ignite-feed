@@ -9,9 +9,10 @@ interface Props {
   post: TPost
   currentAuthor: TAuthor
   handleCreateReply: React.DOMAttributes<HTMLFormElement>["onSubmit"]
+  handleDeleteReply: (replyId: number, postId: number) => void
 }
 
-export function Post({ post, currentAuthor, handleCreateReply }: Props) {
+export function Post({ post, currentAuthor, handleCreateReply, handleDeleteReply }: Props) {
   const canDeleteReply = (currentAuthorId: number, replyAuthorId: number): boolean => currentAuthorId === replyAuthorId
 
   return (
@@ -62,6 +63,7 @@ export function Post({ post, currentAuthor, handleCreateReply }: Props) {
             key={reply.id}
             reply={reply}
             canDeleteReply={canDeleteReply(currentAuthor.id, reply.author.id)}
+            handleDeleteReply={(replyId) => handleDeleteReply(replyId, post.id)}
           />
         )
       })}

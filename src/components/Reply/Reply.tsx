@@ -9,9 +9,10 @@ import { formatDateTime, relativeTimeDiff } from "~/utils"
 interface Props {
   reply: TReply
   canDeleteReply: boolean
+  handleDeleteReply: (replyId: number) => void
 }
 
-export function Reply({ reply, canDeleteReply }: Props) {
+export function Reply({ reply, canDeleteReply, handleDeleteReply }: Props) {
   return (
     <div className={styles.reply}>
       <Avatar src={reply.author.avatar_url} />
@@ -28,7 +29,14 @@ export function Reply({ reply, canDeleteReply }: Props) {
               </time>
             </div>
 
-            <button className={styles.replyContainerBoxMetaDelete}>{canDeleteReply && <Trash size={24} />}</button>
+            <button className={styles.replyContainerBoxMetaDelete}>
+              {canDeleteReply && (
+                <Trash
+                  onClick={() => handleDeleteReply(reply.id)}
+                  size={24}
+                />
+              )}
+            </button>
           </header>
 
           <p className={styles.replyContainerBoxContent}>{reply.content}</p>

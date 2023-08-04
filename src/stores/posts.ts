@@ -9,6 +9,7 @@ interface State {
 interface Actions {
   setPosts: (posts: TPostList) => void
   setPostsReply: (postId: number, reply: TReply) => void
+  deletePostsReply: (postId: number, replyId: number) => void
 }
 
 export const usePostsStore = create<State & Actions>()((set) => ({
@@ -22,6 +23,17 @@ export const usePostsStore = create<State & Actions>()((set) => ({
         return {
           ...post,
           reply: [reply, ...post.reply]
+        }
+      })
+    })),
+  deletePostsReply: (postId, replyId) =>
+    set(({ posts }) => ({
+      posts: posts.map((post) => {
+        if (post.id !== postId) return post
+
+        return {
+          ...post,
+          reply: post.reply.filter((reply) => reply.id !== replyId)
         }
       })
     }))
