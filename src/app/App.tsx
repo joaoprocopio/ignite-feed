@@ -19,9 +19,6 @@ export function App() {
     e.preventDefault()
 
     const textarea = (e.target as HTMLFormElement).content as HTMLTextAreaElement
-
-    textarea.setCustomValidity("")
-
     const reply = await RepliesAPI.createReply(postId, textarea.value)
 
     setPostsReply(postId, reply)

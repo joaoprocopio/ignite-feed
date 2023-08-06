@@ -1,6 +1,6 @@
 import styles from "./Post.module.scss"
 
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 
 import type { TAuthor, TPost } from "~/api/models"
 
@@ -47,12 +47,7 @@ export function Post({ post, currentAuthor, handleCreateReply, handleDeleteReply
 
       <form
         className={styles.postReply}
-        onSubmit={handleCreateReply}
-        onInvalid={(event) => {
-          const textarea = event.target as HTMLTextAreaElement
-
-          textarea.setCustomValidity("Esse campo é obrigatório!")
-        }}>
+        onSubmit={handleCreateReply}>
         <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
 
         <textarea
