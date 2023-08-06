@@ -2,6 +2,7 @@
 
 import { Request, Response } from "miragejs"
 import Cookies from "js-cookie"
+import { HttpStatusCode } from "axios"
 
 import type { Server, Schema } from "~/mocks/@types"
 
@@ -15,18 +16,18 @@ export function routes(this: Server) {
       reply: post.reply.sort((prev, next) => new Date(next.created_at) - new Date(prev.created_at))
     }))
 
-    return new Response(200, {}, { posts })
+    return new Response(HttpStatusCode.Ok, {}, { posts })
   })
 
   this.post("replies/create", (schema: Schema, request: Request) => {
     const body = JSON.parse(request?.requestBody)
 
-    if (!body) return new Response(400, {}, {})
+    if (!body) return new Response(HttpStatusCode.BadRequest, {}, {})
 
     const content = body?.content
     const postId = body?.post_id
 
-    if (!content || !postId) return new Response(400, {}, {})
+    if (!content || !postId) return new Response(HttpStatusCode.BadRequest, {}, {})
 
     const post = schema.findBy("post", { id: postId })
 
@@ -36,35 +37,35 @@ export function routes(this: Server) {
       authorId: post?.authorId
     })
 
-    return new Response(200, {}, reply)
+    return new Response(HttpStatusCode.Ok, {}, reply)
   })
 
   this.post("replies/delete", (schema: Schema, request: Request) => {
     const body = JSON.parse(request?.requestBody)
 
-    if (!body) return new Response(400, {}, {})
+    if (!body) return new Response(HttpStatusCode.BadRequest, {}, {})
 
     const replyId = parseInt(body?.reply_id)
 
-    if (!replyId) return new Response(400, {}, {})
+    if (!replyId) return new Response(HttpStatusCode.BadRequest, {}, {})
 
     const reply = schema.findBy("reply", { id: replyId })
     const authorId = parseInt(Cookies.get("authorid"))
 
-    if (!authorId || reply?.authorId !== authorId) return new Response(401, {}, {}) // TODO: tem bug aqui
+    if (!authorId || reply?.authorId !== authorId) return new Response(HttpStatusCode.BadRequest, {}, {}) // TODO: tem bug aqui
 
     reply.destroy()
 
-    return new Response(200, {}, {})
+    return new Response(HttpStatusCode.Ok, {}, {})
   })
 
   this.get("authors/current", (schema: Schema) => {
     const author = schema.findBy("author", { id: 1 })
 
-    if (!author?.id) return new Response(404, {}, {})
+    if (!author?.id) return new Response(HttpStatusCode.NotFound, {}, {})
 
     Cookies.set("authorid", author.id)
 
-    return new Response(200, {}, author)
+    return new Response(HttpStatusCode.Ok, {}, author)
   })
 }
