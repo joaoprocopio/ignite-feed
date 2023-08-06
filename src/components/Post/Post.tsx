@@ -1,5 +1,7 @@
 import styles from "./Post.module.scss"
 
+import { useEffect, useRef, useState } from "react"
+
 import type { TAuthor, TPost } from "~/api/models"
 
 import { Avatar, Reply } from "~/components"
@@ -13,7 +15,11 @@ interface Props {
 }
 
 export function Post({ post, currentAuthor, handleCreateReply, handleDeleteReply }: Props) {
+  const [content, setContent] = useState<string>("")
+  const contentRef = useRef<HTMLTextAreaElement>(null)
   const canDeleteReply = (currentAuthorId: number, replyAuthorId: number): boolean => currentAuthorId === replyAuthorId
+
+  const disabled = content.length === 0
 
   return (
     <article className={styles.post}>
@@ -41,17 +47,26 @@ export function Post({ post, currentAuthor, handleCreateReply, handleDeleteReply
 
       <form
         className={styles.postReply}
-        onSubmit={handleCreateReply}>
+        onSubmit={handleCreateReply}
+        onInvalid={(event) => {
+          const textarea = event.target as HTMLTextAreaElement
+
+          textarea.setCustomValidity("Esse campo é obrigatório!")
+        }}>
         <strong className={styles.postReplyTitle}>Deixe seu feedback</strong>
 
         <textarea
+          ref={contentRef}
           name="content"
           className={styles.postReplyText}
           placeholder="Escreva um comentário..."
+          onChange={(event) => setContent(event.target.value)}
+          required
         />
 
         <button
           className={styles.postReplyButton}
+          disabled={disabled}
           type="submit">
           Publicar
         </button>

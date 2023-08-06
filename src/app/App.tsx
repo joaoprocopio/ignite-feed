@@ -18,8 +18,11 @@ export function App() {
   const handleCreateReply = async (e: React.FormEvent<HTMLFormElement>, postId: number) => {
     e.preventDefault()
 
-    const content = (e.target as HTMLFormElement).content.value
-    const reply = await RepliesAPI.createReply(postId, content)
+    const textarea = (e.target as HTMLFormElement).content as HTMLTextAreaElement
+
+    textarea.setCustomValidity("")
+
+    const reply = await RepliesAPI.createReply(postId, textarea.value)
 
     setPostsReply(postId, reply)
   }

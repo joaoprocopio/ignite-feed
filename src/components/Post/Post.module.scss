@@ -55,7 +55,11 @@
       @apply rounded-lg;
       @apply mt-4 h-12 px-4 py-2;
       @apply bg-primary-500 font-bold text-white;
-      @apply hover:bg-primary-400;
+      @apply enabled:hover:bg-primary-400;
+
+      &:disabled {
+        @apply cursor-not-allowed opacity-70;
+      }
     }
   }
 }
